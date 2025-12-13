@@ -1,5 +1,11 @@
 const track = document.getElementById("image-track");
 
+/* Mobile momentum tweaks */
+let velocity = 0;
+let lastClientX = 0;
+let lastTime = 0;
+let momentumRAF = null;
+
 // Clone original images for seamless loop
 const originalImages = Array.from(track.querySelectorAll('.image-card'));
 originalImages.forEach(card => {
@@ -110,8 +116,67 @@ window.onmousemove = e => handleMove(e.clientX);
 
 // Touch events, on mobile
 track.addEventListener('touchstart', e => { mouseDownAt = e.touches[0].clientX; isUserInteracting = true; stopAutoPan(); });
-track.addEventListener('touchend', () => { mouseDownAt = 0; track.dataset.prevPercentage = track.dataset.percentage; scheduleAutoPanResume(); });
-track.addEventListener('touchmove', e => { e.preventDefault(); handleMove(e.touches[0].clientX * 2); }, { passive: false });
+track.addEventListener('touchend', () => {
+    mouseDownAt = 0;
+    track.dataset.prevPercentage = track.dataset.percentage;
+
+    startMomentum();
+});
+track.addEventListener('touchmove', e => {
+    e.preventDefault();
+
+    const touchX = e.touches[0].clientX;
+    const now = performance.now();
+
+    if (mouseDownAt === 0) {
+        mouseDownAt = touchX;
+        lastClientX = touchX;
+        lastTime = now;
+        return;
+    }
+
+    const delta = lastClientX - touchX;
+    const dt = now - lastTime || 16;
+
+    velocity = delta / dt; // px per ms
+
+    handleMove(touchX);
+
+    lastClientX = touchX;
+    lastTime = now;
+}, { passive: false });
+
+const startMomentum = () => {
+    cancelAnimationFrame(momentumRAF);
+
+    const friction = 0.95;
+    const minVelocity = 0.001;
+
+    const step = () => {
+        velocity *= friction;
+
+        if (Math.abs(velocity) < minVelocity) {
+            velocity = 0;
+            scheduleAutoPanResume();
+            return;
+        }
+
+        let current = parseFloat(track.dataset.percentage);
+        let next = current - velocity * 16; // scale for frame time
+
+        next = checkAndLoop(next);
+
+        track.dataset.percentage = next;
+        track.dataset.prevPercentage = next;
+
+        track.style.transform = `translate(${next}%, -50%)`;
+        updateImagePositions(0);
+
+        momentumRAF = requestAnimationFrame(step);
+    };
+
+    step();
+};
 
 // Trackpad/scroll
 window.addEventListener('wheel', e => {
