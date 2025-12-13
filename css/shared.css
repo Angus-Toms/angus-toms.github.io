@@ -1,0 +1,69 @@
+/* ============================== 
+ SHARED 
+============================== */
+
+/* ============================== 
+ GENERAL 
+============================== */
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #0a0a0a;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #fafafa;
+    user-select: none;
+}
+
+body.scrollable {
+    overflow-y: auto;
+    height: auto;
+}
+
+/* ============================== 
+ HEADER 
+============================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    background-color: #0a0a0a;
+    z-index: 100;
+}
+
+.header-logo {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header-logo:hover {
+    color: #999;
+}
+
+.header-nav {
+    display: flex;
+    gap: 3rem;
+}
+
+.header-nav a {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #666;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+    color: #ffffff;
+}
