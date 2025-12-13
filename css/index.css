@@ -43,7 +43,6 @@ body {
     object-fit: cover;
     object-position: 50% 50%;
     border-radius: 2px;
-    filter: brightness(0.7);
 }
 
 .hero-overlay {

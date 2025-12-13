@@ -108,10 +108,10 @@ window.onmousedown = e => { mouseDownAt = e.clientX; };
 window.onmouseup = () => { mouseDownAt = 0; track.dataset.prevPercentage = track.dataset.percentage; scheduleAutoPanResume(); };
 window.onmousemove = e => handleMove(e.clientX);
 
-// Touch events
+// Touch events, on mobile
 track.addEventListener('touchstart', e => { mouseDownAt = e.touches[0].clientX; isUserInteracting = true; stopAutoPan(); });
 track.addEventListener('touchend', () => { mouseDownAt = 0; track.dataset.prevPercentage = track.dataset.percentage; scheduleAutoPanResume(); });
-track.addEventListener('touchmove', e => { e.preventDefault(); handleMove(e.touches[0].clientX); }, { passive: false });
+track.addEventListener('touchmove', e => { e.preventDefault(); handleMove(e.touches[0].clientX * 2); }, { passive: false });
 
 // Trackpad/scroll
 window.addEventListener('wheel', e => {
