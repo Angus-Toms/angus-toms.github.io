@@ -1,30 +1,57 @@
 /* ============================== 
- SHARED 
+ SHARED STYLES
 ============================== */
 
 /* ============================== 
- GENERAL 
+ VARIABLES & RESET
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --purple-950: #1b082b;
+    --purple-900: #2a0b4a;
+    --purple-800: #3b1172;
+    --purple-700: #4f1a9c;
+    --purple-500: #7b3ff0;
+    --purple-300: #c3a3ff;
+    --text-primary: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --text-faint: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================== 
+ BODY & BACKGROUND
 ============================== */
 body {
-    height: 100vh;
-    width: 100vw;
-    background-color: #0a0a0a;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(123, 63, 240, 0.7) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(195, 163, 255, 0.5) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(79, 26, 156, 0.6) 0%, transparent 35%),
+        radial-gradient(circle at 10% 80%, rgba(123, 63, 240, 0.55) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(79, 26, 156, 0.65) 0%, transparent 45%),
+        radial-gradient(circle at 60% 90%, rgba(195, 163, 255, 0.4) 0%, transparent 38%),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+        ),
+        linear-gradient(135deg, #1b082b 0%, #2a0b4a 25%, #4f1a9c 60%, #3b1172 100%);
     margin: 0;
-    overflow: hidden;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #fafafa;
-    user-select: none;
-}
-
-body.scrollable {
-    overflow-y: auto;
-    height: auto;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-primary);
+    overflow-x: hidden;
 }
 
 /* ============================== 
- HEADER 
+ HEADER
 ============================== */
-.main-header {
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -32,38 +59,50 @@ body.scrollable {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem;
-    background-color: #0a0a0a;
+    padding: 1.5rem 3rem;
+    background: rgba(35, 9, 65, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 100;
 }
 
-.header-logo {
-    font-weight: 500;
-    font-size: 0.875rem;
-    color: #ffffff;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.header-logo:hover {
-    color: #999;
-}
-
-.header-nav {
-    display: flex;
-    gap: 3rem;
-}
-
-.header-nav a {
-    font-weight: 400;
+.logo {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
-    color: #666;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
     text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: color 0.3s ease;
 }
 
-.header-nav a:hover {
-    color: #ffffff;
+.nav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: var(--text-primary);
+}
+
+/* ============================== 
+ RESPONSIVE HEADER
+============================== */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 1.5rem;
+    }
+
+    .nav {
+        gap: 1.5rem;
+    }
 }
