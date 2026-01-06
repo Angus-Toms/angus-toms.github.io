@@ -1,142 +1,80 @@
-const track = document.getElementById("image-track");
+const thumbs = Array.from(document.querySelectorAll(".gallery-thumb"));
+const mainImage = document.getElementById("gallery-main-image");
+const riderLabel = document.getElementById("gallery-main-rider");
+const raceLabel = document.getElementById("gallery-main-race");
+const countLabel = document.getElementById("gallery-count");
+const controls = document.querySelectorAll("[data-direction]");
 
-/* Mobile momentum tweaks */
-let velocity = 0;
-let lastClientX = 0;
-let lastTime = 0;
-let momentumRAF = null;
+let currentIndex = 0;
+const total = thumbs.length;
 
-// Clone original images for seamless loop
-const originalImages = Array.from(track.querySelectorAll('.image-card'));
-originalImages.forEach(card => {
-    const clone = card.cloneNode(true);
-    track.appendChild(clone);
+const getThumbRadius = () => {
+    if (window.matchMedia("(max-width: 720px)").matches) return 1;
+    if (window.matchMedia("(max-width: 1100px)").matches) return 2;
+    return 3;
+};
+
+const updateVisibleThumbs = () => {
+    if (!total) return;
+    const radius = getThumbRadius();
+    const orderMap = new Map();
+
+    for (let offset = -radius; offset <= radius; offset += 1) {
+        const index = (currentIndex + offset + total) % total;
+        orderMap.set(index, offset + radius);
+    }
+
+    thumbs.forEach((thumb, index) => {
+        const isVisible = orderMap.has(index);
+        const order = orderMap.get(index);
+        const isEdge = isVisible && (order === 0 || order === radius * 2);
+        const isNeighbor = isVisible && index !== currentIndex;
+        thumb.classList.toggle("is-visible", isVisible);
+        thumb.classList.toggle("is-edge", isEdge);
+        thumb.classList.toggle("is-neighbor", isNeighbor);
+        thumb.setAttribute("aria-hidden", isVisible ? "false" : "true");
+
+        if (isVisible) {
+            thumb.style.order = order;
+        } else {
+            thumb.style.order = "";
+        }
+    });
+};
+
+const setActive = (nextIndex) => {
+    if (!total) return;
+    currentIndex = (nextIndex + total) % total;
+
+    const activeThumb = thumbs[currentIndex];
+    const { image, rider, race, alt } = activeThumb.dataset;
+
+    mainImage.src = image;
+    mainImage.alt = alt;
+    riderLabel.textContent = rider;
+    raceLabel.textContent = race;
+    countLabel.textContent = `${currentIndex + 1} / ${total}`;
+
+    thumbs.forEach((thumb, index) => {
+        const isActive = index === currentIndex;
+        thumb.classList.toggle("is-active", isActive);
+        thumb.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+
+    updateVisibleThumbs();
+};
+
+thumbs.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => setActive(index));
 });
 
-track.dataset.percentage = "0";
-track.dataset.prevPercentage = "0";
-let mouseDownAt = 0;
+controls.forEach((button) => {
+    button.addEventListener("click", () => {
+        const direction = button.dataset.direction === "next" ? 1 : -1;
+        setActive(currentIndex + direction);
+    });
+});
 
-// --- Parallax ---
-const updateImagePositions = (duration = 0) => {
-    const viewportCenter = window.innerWidth / 2;
-    for (const card of track.getElementsByClassName("image-card")) {
-        const image = card.querySelector(".image");
-        const rect = card.getBoundingClientRect();
-        const cardCenter = rect.left + rect.width / 2;
-        const distanceFromCenter = (cardCenter - viewportCenter) / (window.innerWidth / 2);
-        const parallaxOffset = distanceFromCenter * 20;
-        const objPos = Math.max(0, Math.min(100, 50 - parallaxOffset));
+window.addEventListener("resize", updateVisibleThumbs);
 
-        image.animate(
-            { objectPosition: `${objPos}% center` },
-            { duration, fill: "forwards", easing: "cubic-bezier(0.25,0.46,0.45,0.94)" }
-        );
-    }
-};
-
-// --- Loop logic ---
-const loopWidth = track.scrollWidth / 2; // width of original images
-
-const checkAndLoop = (nextPercentage) => {
-    const trackWidth = track.scrollWidth;
-    const nextX = (nextPercentage / 100) * trackWidth;
-    let correctedX = nextX;
-
-    if (nextX <= -loopWidth) correctedX += loopWidth;
-    else if (nextX > 0) correctedX -= loopWidth;
-
-    const correctedPercentage = (correctedX / trackWidth) * 100;
-    track.dataset.prevPercentage = correctedPercentage;
-    return correctedPercentage;
-};
-
-// --- Auto-pan setup ---
-let autoPanInterval = null;
-let isUserInteracting = false;
-let inactivityTimeout = null;
-const panSpeed = 0.005; // Adjust for speed
-let autoPanDirection = -1;
-
-const startAutoPan = () => {
-    if (autoPanInterval) return;
-    autoPanInterval = setInterval(() => {
-        if (isUserInteracting) return;
-
-        let currentPercentage = parseFloat(track.dataset.percentage);
-        let nextPercentage = currentPercentage + panSpeed * autoPanDirection;
-        nextPercentage = checkAndLoop(nextPercentage);
-
-        track.dataset.percentage = nextPercentage;
-        track.dataset.prevPercentage = nextPercentage;
-        track.style.transform = `translate(${nextPercentage}%, -50%)`;
-        updateImagePositions(0);
-    }, 16); // ~60fps
-};
-
-const stopAutoPan = () => {
-    if (autoPanInterval) {
-        clearInterval(autoPanInterval);
-        autoPanInterval = null;
-    }
-};
-
-const scheduleAutoPanResume = () => {
-    clearTimeout(inactivityTimeout);
-    inactivityTimeout = setTimeout(() => {
-        isUserInteracting = false;
-        startAutoPan();
-    }, 5000); // Restart after 5s
-};
-
-// --- Interaction ---
-const handleMove = (clientX) => {
-    if (mouseDownAt === 0) return;
-    if (!isUserInteracting) {
-        isUserInteracting = true;
-        stopAutoPan();
-    }
-
-    const delta = mouseDownAt - clientX;
-    const maxDelta = window.innerWidth * 100;
-    const percentage = (delta / maxDelta) * -100;
-    let nextPercentage = parseFloat(track.dataset.prevPercentage) + percentage;
-
-    nextPercentage = checkAndLoop(nextPercentage);
-    track.dataset.percentage = nextPercentage;
-
-    track.style.transform = `translate(${nextPercentage}%, -50%)`;
-    updateImagePositions(0);
-};
-
-// Mouse events
-window.onmousedown = e => { mouseDownAt = e.clientX; };
-window.onmouseup = () => { mouseDownAt = 0; track.dataset.prevPercentage = track.dataset.percentage; scheduleAutoPanResume(); };
-window.onmousemove = e => handleMove(e.clientX);
-
-// Touch events, on mobile
-track.addEventListener('touchstart', e => { mouseDownAt = e.touches[0].clientX; isUserInteracting = true; stopAutoPan(); });
-track.addEventListener('touchend', () => { mouseDownAt = 0; track.dataset.prevPercentage = track.dataset.percentage; scheduleAutoPanResume(); });
-track.addEventListener('touchmove', e => { e.preventDefault(); handleMove(e.touches[0].clientX); }, { passive: false });
-
-// Trackpad/scroll
-window.addEventListener('wheel', e => {
-    e.preventDefault();
-    if (!isUserInteracting) { isUserInteracting = true; stopAutoPan(); }
-
-    const scrollAmount = e.deltaX;
-    const sensitivity = 0.01;
-    let nextPercentage = parseFloat(track.dataset.prevPercentage) - (scrollAmount * sensitivity);
-    nextPercentage = checkAndLoop(nextPercentage);
-
-    track.dataset.percentage = nextPercentage;
-    track.dataset.prevPercentage = nextPercentage;
-    track.style.transform = `translate(${nextPercentage}%, -50%)`;
-    updateImagePositions(0);
-
-    scheduleAutoPanResume(); // Restart after scrolling stops
-}, { passive: false });
-
-// Initialize parallax
-updateImagePositions(0);
-startAutoPan(); // Start auto-pan on load
+setActive(0);

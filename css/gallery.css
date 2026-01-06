@@ -1,55 +1,254 @@
 /* ============================== 
- IMAGE TRACK AND CARDS 
+ GALLERY PAGE STYLES
 ============================== */
-#image-track {
-    display: flex;
-    gap: 5vmin;
-    position: absolute;
-    left: 0;
-    top: 55%;
-    transform: translate(0%, -50%);
-    padding: 0 2vw;
+.gallery-page {
+    min-height: 100vh;
 }
 
-.image-card {
+.gallery-hero {
+    min-height: 100vh;
+    padding: 8.5rem 3rem 4rem;
+    position: relative;
+}
+
+.gallery-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(195, 163, 255, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(123, 63, 240, 0.18) 0%, transparent 55%);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.gallery-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 1rem;
+}
+
+.gallery-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(2.6rem, 5.5vw, 5rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.gallery-lede {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 28rem;
+}
+
+.gallery-viewer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.gallery-stage {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    cursor: pointer;
 }
 
-/* Image styling */
-.image-card .image {
-    width: 40vmin;
-    height: 56vmin;
+.gallery-frame {
+    position: relative;
+    border-radius: 26px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(195, 163, 255, 0.16);
+}
+
+.gallery-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(140deg, rgba(123, 63, 240, 0.2) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+.gallery-frame img {
+    width: 100%;
+    height: 100%;
+    max-height: 560px;
     object-fit: cover;
-    object-position: 50% 50%;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 24px 50px rgba(10, 4, 24, 0.45);
-    transition: box-shadow 0.5s ease;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
 }
 
-/* Info underneath each image */
-.image-info {
+.gallery-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.5rem 1.75rem;
+    background: linear-gradient(180deg, rgba(27, 8, 43, 0) 0%, rgba(27, 8, 43, 0.75) 70%);
+}
+
+.gallery-rider {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.gallery-race {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+.gallery-controls {
     display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-/* Rider name */
-.image-info .rider-name {
-    font-weight: 500;
-    font-size: 0.875rem;
+.gallery-control {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--text-primary);
-    letter-spacing: 0.02em;
+    background: rgba(195, 163, 255, 0.12);
+    border: 1px solid rgba(195, 163, 255, 0.35);
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s, border-color 0.3s;
 }
 
-/* Race name */
-.image-info .race-name {
-    font-weight: 400;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 0.03em;
+.gallery-control:hover {
+    transform: translateY(-2px);
+    background: rgba(195, 163, 255, 0.2);
+    border-color: rgba(195, 163, 255, 0.6);
+}
+
+.gallery-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+.gallery-thumbs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    overflow: visible;
+    justify-content: center;
+    padding: 0.5rem 0.25rem 0.75rem;
+}
+
+.gallery-thumb {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: none;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 150px;
+    --thumb-scale: 1;
+    transform: scale(var(--thumb-scale));
+}
+
+.gallery-thumb.is-visible {
+    display: block;
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.05) contrast(1.02);
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.gallery-thumb.is-active {
+    box-shadow: 0 0 0 2px var(--purple-300), 0 18px 40px rgba(0, 0, 0, 0.45);
+    transform: translateY(-2px) scale(var(--thumb-scale));
+}
+
+.gallery-thumb.is-neighbor {
+    --thumb-scale: 0.96;
+}
+
+.gallery-thumb.is-edge {
+    --thumb-scale: 0.9;
+}
+
+.gallery-thumb:hover {
+    transform: translateY(-2px) scale(var(--thumb-scale));
+}
+
+@media (max-width: 1024px) {
+    .gallery-hero {
+        padding: 8rem 2.5rem 3.5rem;
+    }
+
+    .gallery-layout {
+        gap: 2rem;
+    }
+
+    .gallery-lede {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-hero {
+        padding: 7rem 1.5rem 3rem;
+    }
+
+    .gallery-title {
+        font-size: 2.6rem;
+    }
+
+    .gallery-frame img {
+        max-height: 420px;
+    }
+
+    .gallery-thumb {
+        max-width: 120px;
+    }
 }

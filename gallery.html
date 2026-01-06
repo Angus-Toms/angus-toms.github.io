@@ -3,152 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EBF RT - Gallery</title>
-
-    <link rel="stylesheet" href="css/shared.css">
-    <link rel="stylesheet" href="css/gallery.css">
-
+    <title>New Gradient - Gallery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/gallery.css">
 </head>
 <body>
 
-<!-- Standard Header -->
-<header class="main-header">
-    <a href="index.html" class="header-logo">Edinburgh Bike Fitting RT</a>
-    <nav class="header-nav">
-        <a href="story.html">Our Story</a>
-        <a href="team.html">The Team</a>
+<header class="header">
+    <a href="index.html" class="logo">NEW GRADIENT EDINBURGH BIKE FITTING RT</a>
+    <nav class="nav">
+        <a href="index.html#story">Story</a>
+        <a href="index.html#team">Team</a>
         <a href="gallery.html">Gallery</a>
         <a href="blog.html">Blog</a>
     </nav>
 </header>
 
-<!-- Track gallery -->
-<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_3.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Elijah Kwon</div>
-        <div class="race-name">Tour of Guizhou Eco-Province</div>
-        </div>
-    </div>
+<main class="gallery-page">
+    <section class="gallery-hero">
+        <div class="gallery-container">
+            <div class="gallery-layout">
+                <div class="gallery-intro">
+                    <div class="gallery-kicker">Photo Archive</div>
+                    <h1 class="gallery-title">RACE<br>MOMENTS</h1>
+                    <p class="gallery-lede">A focused, click-through gallery that highlights the grit, speed, and camaraderie behind the EBF RT season.</p>
+                </div>
 
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_4.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Thibault Fostier, Ed Morgan, Elijah Kwon, Tom Williams</div>
-        <div class="race-name">Tour of Guizhou Eco-Province</div>
-        </div>
-    </div>
+                <div class="gallery-viewer">
+                    <div class="gallery-stage">
+                        <div class="gallery-frame">
+                            <img id="gallery-main-image" src="imgs/ebf_3.jpg" alt="Elijah Kwon racing at Tour of Guizhou Eco-Province" draggable="false">
+                            <div class="gallery-caption">
+                                <div id="gallery-main-rider" class="gallery-rider">Elijah Kwon</div>
+                                <div id="gallery-main-race" class="gallery-race">Tour of Guizhou Eco-Province</div>
+                            </div>
+                        </div>
 
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_6.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Elijah Kwon</div>
-        <div class="race-name">Tour of Lithuania</div>
-        </div>
-    </div>
+                        <div class="gallery-controls">
+                            <button class="gallery-control" type="button" data-direction="prev">Previous</button>
+                            <div id="gallery-count" class="gallery-count">1 / 15</div>
+                            <button class="gallery-control" type="button" data-direction="next">Next</button>
+                        </div>
+                    </div>
 
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_2.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Thibault Fostier</div>
-        <div class="race-name">Tour of Guizhou Eco-Province</div>
+                    <div class="gallery-thumbs" role="list">
+                        <button class="gallery-thumb is-active" type="button" data-index="0" data-image="imgs/ebf_3.jpg" data-rider="Elijah Kwon" data-race="Tour of Guizhou Eco-Province" data-alt="Elijah Kwon racing at Tour of Guizhou Eco-Province" aria-pressed="true">
+                            <img src="imgs/ebf_3.jpg" alt="Elijah Kwon racing at Tour of Guizhou Eco-Province" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="1" data-image="imgs/ebf_4.jpg" data-rider="Thibault Fostier, Ed Morgan, Elijah Kwon, Tom Williams" data-race="Tour of Guizhou Eco-Province" data-alt="Team riders at Tour of Guizhou Eco-Province" aria-pressed="false">
+                            <img src="imgs/ebf_4.jpg" alt="Team riders at Tour of Guizhou Eco-Province" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="2" data-image="imgs/ebf_6.jpg" data-rider="Elijah Kwon" data-race="Tour of Lithuania" data-alt="Elijah Kwon at Tour of Lithuania" aria-pressed="false">
+                            <img src="imgs/ebf_6.jpg" alt="Elijah Kwon at Tour of Lithuania" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="3" data-image="imgs/ebf_2.jpg" data-rider="Thibault Fostier" data-race="Tour of Guizhou Eco-Province" data-alt="Thibault Fostier racing at Tour of Guizhou Eco-Province" aria-pressed="false">
+                            <img src="imgs/ebf_2.jpg" alt="Thibault Fostier racing at Tour of Guizhou Eco-Province" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="4" data-image="imgs/ebf_1.jpg" data-rider="Elijah Kwon" data-race="Tour of Guizhou Eco-Province" data-alt="Elijah Kwon racing in Guizhou" aria-pressed="false">
+                            <img src="imgs/ebf_1.jpg" alt="Elijah Kwon racing in Guizhou" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="5" data-image="imgs/ebf_5.jpg" data-rider="Finn McHenry, Elijah Kwon, Alex Ball" data-race="Tour of Guizhou Eco-Province" data-alt="Finn McHenry, Elijah Kwon, and Alex Ball at Tour of Guizhou Eco-Province" aria-pressed="false">
+                            <img src="imgs/ebf_5.jpg" alt="Finn McHenry, Elijah Kwon, and Alex Ball at Tour of Guizhou Eco-Province" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="6" data-image="imgs/ebf_7.jpg" data-rider="Finn McHenry, Elijah Kwon, Alex Ball" data-race="Tour of Kosovo" data-alt="Finn McHenry, Elijah Kwon, and Alex Ball at Tour of Kosovo" aria-pressed="false">
+                            <img src="imgs/ebf_7.jpg" alt="Finn McHenry, Elijah Kwon, and Alex Ball at Tour of Kosovo" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="7" data-image="imgs/ebf_8.jpg" data-rider="Elijah Kwon" data-race="Cambridge Criterium" data-alt="Elijah Kwon at Cambridge Criterium" aria-pressed="false">
+                            <img src="imgs/ebf_8.jpg" alt="Elijah Kwon at Cambridge Criterium" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="8" data-image="imgs/ebf_9.jpg" data-rider="Matti Dobbins, Craig Paterson, Sam Chisolm" data-race="Drummond Trophy" data-alt="Matti Dobbins, Craig Paterson, and Sam Chisolm at Drummond Trophy" aria-pressed="false">
+                            <img src="imgs/ebf_9.jpg" alt="Matti Dobbins, Craig Paterson, and Sam Chisolm at Drummond Trophy" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="9" data-image="imgs/ebf_10.jpg" data-rider="Elijah Kwon" data-race="Perth Criterium" data-alt="Elijah Kwon at Perth Criterium" aria-pressed="false">
+                            <img src="imgs/ebf_10.jpg" alt="Elijah Kwon at Perth Criterium" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="10" data-image="imgs/ebf_11.jpg" data-rider="Finn McHenry" data-race="CiCLE Classic" data-alt="Finn McHenry at CiCLE Classic" aria-pressed="false">
+                            <img src="imgs/ebf_11.jpg" alt="Finn McHenry at CiCLE Classic" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="11" data-image="imgs/ebf_12.jpg" data-rider="Sam Chisolm" data-race="Scottish National Road Race Championships" data-alt="Sam Chisolm at Scottish National Road Race Championships" aria-pressed="false">
+                            <img src="imgs/ebf_12.jpg" alt="Sam Chisolm at Scottish National Road Race Championships" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="12" data-image="imgs/ebf_15.jpg" data-rider="Mungo Toms" data-race="Tour of Lithuania" data-alt="Mungo Toms at Tour of Lithuania" aria-pressed="false">
+                            <img src="imgs/ebf_15.jpg" alt="Mungo Toms at Tour of Lithuania" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="13" data-image="imgs/ebf_13.jpg" data-rider="Lewis Reynolds, Sam Carrotte, Elijah Kwon, Craig Paterson, Scott Meldrum, Finn McHenry, Matti Dobbins" data-race="Drummond Trophy" data-alt="Team group at Drummond Trophy" aria-pressed="false">
+                            <img src="imgs/ebf_13.jpg" alt="Team group at Drummond Trophy" loading="lazy" draggable="false">
+                        </button>
+                        <button class="gallery-thumb" type="button" data-index="14" data-image="imgs/ebf_14.jpg" data-rider="Sam Chisolm, Louis Moore, Scott Meldrum" data-race="Scottish National Gravel Championships" data-alt="Sam Chisolm, Louis Moore, and Scott Meldrum at Scottish National Gravel Championships" aria-pressed="false">
+                            <img src="imgs/ebf_14.jpg" alt="Sam Chisolm, Louis Moore, and Scott Meldrum at Scottish National Gravel Championships" loading="lazy" draggable="false">
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+</main>
 
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_1.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Elijah Kwon</div>
-        <div class="race-name">Tour of Guizhou Eco-Province</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_5.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Finn McHenry, Elijah Kwon, Alex Ball</div>
-        <div class="race-name">Tour of Guizhou Eco-Province</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_7.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Finn McHenry, Elijah Kwon, Alex Ball</div>
-        <div class="race-name">Tour of Kosovo</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_8.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Elijah Kwon</div>
-        <div class="race-name">Cambridge Criterium</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_9.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Matti Dobbins, Craig Paterson, Sam Chisolm</div>
-        <div class="race-name">Drummond Trophy</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_10.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Elijah Kwon</div>
-        <div class="race-name">Perth Criterium</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_11.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Finn McHenry</div>
-        <div class="race-name">CiCLE Classic</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_12.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Sam Chisolm</div>
-        <div class="race-name">Scottish National Road Race Championships</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_15.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Mungo Toms</div>
-        <div class="race-name">Tour of Lithuania</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_13.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Lewis Reynolds, Sam Carrotte, Elijah Kwon, Craig Paterson, Scott Meldrum, Finn McHenry, Matti Dobbins</div>
-        <div class="race-name">Drummond Trophy</div>
-        </div>
-    </div>
-
-    <div class="image-card">
-        <img class="image" src="imgs/ebf_14.jpg" draggable="false" loading="lazy">
-        <div class="image-info">
-        <div class="rider-name">Sam Chisolm, Louis Moore, Scott Meldrum</div>
-        <div class="race-name">Scottish National Gravel Championships</div>
-        </div>
-    </div>
-</div>
-
-<!-- JS -->
 <script src="js/gallery.js"></script>
 
 </body>
