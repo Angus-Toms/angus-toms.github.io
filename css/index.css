@@ -235,6 +235,16 @@ INDEX PAGE STYLES
     margin-bottom: 2.75rem;
 }
 
+.section-title-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.section-title-link:hover {
+    color: var(--purple-300);
+}
+
 .section-content p {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.95rem;

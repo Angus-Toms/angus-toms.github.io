@@ -1,0 +1,385 @@
+/* ============================== 
+ TEAM PAGE STYLES
+============================== */
+
+/* ============================== 
+ PAGE HERO
+============================== */
+.page-hero {
+    padding: 8rem 3rem 4rem;
+    text-align: center;
+    position: relative;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 50% 30%, rgba(195, 163, 255, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.page-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.page-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.page-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================== 
+ TEAM GRID
+============================== */
+.team-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 3rem 5rem;
+}
+
+.athlete-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    margin-bottom: 5rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: start;
+}
+
+.athlete-card:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* ============================== 
+ ATHLETE LEFT COLUMN
+============================== */
+.athlete-left {
+    position: sticky;
+    top: 7rem;
+}
+
+.athlete-headshot {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(195, 163, 255, 0.15);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.athlete-headshot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(123, 63, 240, 0.15) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.athlete-headshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.headshot-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+}
+
+.athlete-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.8rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}
+
+.athlete-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.info-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    min-width: 90px;
+}
+
+.info-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* ============================== 
+ ATHLETE RIGHT COLUMN
+============================== */
+.athlete-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.athlete-bio {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+.race-gallery-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 1rem;
+}
+
+.race-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.gallery-image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-image:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(195, 163, 255, 0.2);
+}
+
+.gallery-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(123, 63, 240, 0.1) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 6, 24, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 200;
+}
+
+.lightbox.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    max-width: min(900px, 88vw);
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.lightbox-image {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 18px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+}
+
+.lightbox-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    text-align: center;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.9rem;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+}
+
+/* ============================== 
+ RESPONSIVE
+============================== */
+@media (max-width: 1024px) {
+    .athlete-card {
+        grid-template-columns: 250px 1fr;
+        gap: 2rem;
+    }
+
+    .race-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 6rem 1.5rem 3rem;
+    }
+
+    .team-container {
+        padding: 2rem 1.5rem 3rem;
+    }
+
+    .athlete-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .athlete-left {
+        position: static;
+    }
+
+    .athlete-headshot {
+        max-width: 300px;
+        margin: 0 auto 1.5rem;
+    }
+
+    .athlete-name,
+    .athlete-info {
+        text-align: center;
+    }
+
+    .info-item {
+        justify-content: center;
+    }
+
+    .race-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .gallery-image {
+        aspect-ratio: 5 / 4;
+    }
+}
+
+@media (max-width: 520px) {
+    .race-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-image {
+        aspect-ratio: 4 / 3;
+    }
+}
