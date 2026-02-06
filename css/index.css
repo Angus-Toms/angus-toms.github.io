@@ -196,12 +196,84 @@ INDEX PAGE STYLES
     pointer-events: none;
 }
 
-/* ============================== 
+/* ==============================
  CONTENT SECTIONS
 ============================== */
 .section {
     padding: 5rem 3rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==============================
+ SPONSORS SECTION
+============================== */
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.sponsor-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 2 / 1;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.sponsor-logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(195, 163, 255, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sponsor-logo:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(195, 163, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sponsor-logo:hover::before {
+    opacity: 1;
+}
+
+.sponsor-logo img {
+    max-width: 80%;
+    max-height: 60%;
+    object-fit: contain;
+    filter: brightness(0.9) grayscale(0.2);
+    transition: filter 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.sponsor-logo:hover img {
+    filter: brightness(1) grayscale(0);
+}
+
+/* Placeholder styling - remove when actual logos are added */
+.sponsor-placeholder {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    position: relative;
+    z-index: 1;
 }
 
 .section-container {
@@ -364,5 +436,10 @@ INDEX PAGE STYLES
 
     .section-image {
         margin-bottom: 1.5rem;
+    }
+
+    .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 }
