@@ -210,8 +210,14 @@ INDEX PAGE STYLES
 .sponsors-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2.5rem 2rem;
     margin-top: 2.5rem;
+}
+
+.sponsor-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .sponsor-logo {
@@ -251,8 +257,8 @@ INDEX PAGE STYLES
 }
 
 .sponsor-logo img {
-    max-width: 80%;
-    max-height: 60%;
+    max-width: 92%;
+    max-height: 69%;
     object-fit: contain;
     filter: brightness(0.9) grayscale(0.2);
     transition: filter 0.3s ease;
@@ -264,10 +270,38 @@ INDEX PAGE STYLES
     filter: brightness(1) grayscale(0);
 }
 
-/* Placeholder styling - remove when actual logos are added */
+/* Sponsor caption */
+.sponsor-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Empty sponsor slot styling */
+.sponsor-logo-empty {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.sponsor-logo-empty:hover {
+    transform: none;
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.sponsor-logo-empty::before {
+    display: none;
+}
+
+/* Placeholder styling */
 .sponsor-placeholder {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;

@@ -94,7 +94,53 @@ body {
     color: var(--text-primary);
 }
 
-/* ============================== 
+/* ==============================
+ PAGE HERO (shared across subpages)
+============================== */
+.page-hero {
+    padding: 8rem 3rem 4rem;
+    text-align: center;
+    position: relative;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 50% 30%, rgba(195, 163, 255, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.page-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.page-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.page-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==============================
  RESPONSIVE HEADER
 ============================== */
 @media (max-width: 768px) {
@@ -104,5 +150,9 @@ body {
 
     .nav {
         gap: 1.5rem;
+    }
+
+    .page-hero {
+        padding: 6rem 1.5rem 3rem;
     }
 }
