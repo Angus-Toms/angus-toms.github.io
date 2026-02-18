@@ -8,38 +8,35 @@ body {
 }
 
 .blog-section .section-header {
+    position: static;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .blog-section .section-title {
-    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+    font-size: 2.5rem;
+    line-height: 0.9;
     margin-bottom: 0;
 }
 
 .blog-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
+    font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-faint);
 }
 
 .blog-entry {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 2.5rem;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
 }
 
 .blog-entry .section-image {
     margin-bottom: 1.5rem;
-    border-radius: 18px;
-    overflow: hidden;
 }
 
 .entry-meta {
@@ -48,10 +45,11 @@ body {
     gap: 0.5rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
+    font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-faint);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .meta-separator {
@@ -59,10 +57,12 @@ body {
 }
 
 .blog-entry .entry-text {
-    font-size: 0.95rem;
-    line-height: 1.8;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
     color: var(--text-muted);
-    margin-bottom: 0.5rem;
+    max-width: 70ch;
+    margin-bottom: 1rem;
 }
 
 .blog-entry .entry-full {
@@ -99,7 +99,7 @@ body {
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-faint);
+    color: var(--purple-300);
     cursor: pointer;
     padding: 0.6rem 0 0;
     transition: color 0.3s ease;
@@ -119,12 +119,22 @@ body {
 }
 
 @media (max-width: 768px) {
-    .blog-entry {
-        padding: 1.8rem;
+    .blog-section .section-title {
+        font-size: 2rem;
+    }
+
+    .blog-entry .entry-text {
+        font-size: 1rem;
     }
 
     .entry-meta {
         flex-wrap: wrap;
         row-gap: 0.35rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .blog-section .section-title {
+        font-size: 1.75rem;
     }
 }
