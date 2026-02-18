@@ -1,29 +1,91 @@
-/* ============================== 
+/* ==============================
  TEAM PAGE STYLES
 ============================== */
 
 /* ==============================
- TEAM GRID
+ TEAM GRID OVERVIEW
 ============================== */
-.team-container {
+.team-grid {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem 3rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.grid-athlete-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.grid-athlete-card:hover {
+    transform: translateY(-6px);
+}
+
+.grid-athlete-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(195, 163, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.grid-athlete-card:hover .grid-athlete-photo {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(195, 163, 255, 0.25);
+}
+
+.grid-athlete-photo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(123, 63, 240, 0.15) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.grid-athlete-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.8) contrast(1.08) brightness(0.95);
+}
+
+.grid-athlete-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.grid-athlete-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+/* Hide detailed cards - they're used as data source for modal */
+.team-container {
+    display: none;
 }
 
 .athlete-card {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin-bottom: 5rem;
-    padding-bottom: 5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.athlete-card:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
 }
 
 .athlete-header {
@@ -31,6 +93,142 @@
     grid-template-columns: 280px 1fr;
     gap: 3rem;
     margin-bottom: 2.5rem;
+}
+
+/* ==============================
+ ATHLETE MODAL
+============================== */
+.athlete-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 6, 24, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 300;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.athlete-modal.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.modal-content {
+    max-width: 1200px;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(18, 9, 36, 0.95) 0%, rgba(12, 6, 24, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(123, 63, 240, 0.15);
+    margin: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.9rem;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.modal-athlete-header {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.modal-athlete-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(195, 163, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-athlete-photo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(123, 63, 240, 0.15) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.modal-athlete-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.8) contrast(1.08) brightness(0.95);
+}
+
+.modal-athlete-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-athlete-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3rem;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.modal-social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.modal-athlete-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 2rem;
+}
+
+.modal-athlete-gallery {
+    margin-top: 2rem;
+}
+
+.modal-race-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
 }
 
 /* ==============================
@@ -227,7 +425,8 @@ body.lightbox-open {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
-    z-index: 200;
+    z-index: 400;
+    padding: 3rem;
 }
 
 .lightbox.is-active {
@@ -236,17 +435,19 @@ body.lightbox-open {
 }
 
 .lightbox-content {
-    max-width: min(900px, 88vw);
-    max-height: 80vh;
+    max-width: 90vw;
+    max-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 
 .lightbox-image {
-    width: 100%;
-    max-height: 70vh;
+    max-width: 100%;
+    max-height: calc(90vh - 4rem);
+    width: auto;
+    height: auto;
     object-fit: contain;
     border-radius: 18px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
@@ -259,12 +460,13 @@ body.lightbox-open {
     text-transform: uppercase;
     color: var(--text-faint);
     text-align: center;
+    max-width: 100%;
 }
 
 .lightbox-close {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 3.5rem;
+    right: 3.5rem;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--text-primary);
@@ -276,11 +478,45 @@ body.lightbox-open {
     cursor: pointer;
     border-radius: 999px;
     transition: background 0.2s ease, border-color 0.2s ease;
+    z-index: 10;
 }
 
 .lightbox-close:hover {
     background: rgba(255, 255, 255, 0.16);
     border-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+    .lightbox {
+        padding: 2rem;
+    }
+
+    .lightbox-image {
+        max-height: calc(90vh - 3rem);
+    }
+
+    .lightbox-close {
+        top: 2.5rem;
+        right: 2.5rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .lightbox {
+        padding: 1.5rem;
+    }
+
+    .lightbox-image {
+        max-height: calc(90vh - 2.5rem);
+        border-radius: 12px;
+    }
+
+    .lightbox-close {
+        top: 2rem;
+        right: 2rem;
+        font-size: 0.6rem;
+        padding: 0.5rem 0.75rem;
+    }
 }
 
 .gallery-placeholder {
@@ -296,13 +532,22 @@ body.lightbox-open {
     text-transform: uppercase;
 }
 
-/* ============================== 
+/* ==============================
  RESPONSIVE
 ============================== */
 @media (max-width: 1024px) {
-    .athlete-header {
+    .team-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .modal-athlete-header {
         grid-template-columns: 240px 1fr;
         gap: 2.5rem;
+    }
+
+    .modal-race-gallery {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .race-gallery {
@@ -311,30 +556,47 @@ body.lightbox-open {
 }
 
 @media (max-width: 768px) {
-    .team-container {
+    .team-grid {
         padding: 2rem 1.5rem 3rem;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.25rem;
     }
 
-    .athlete-header {
+    .modal-content {
+        padding: 2rem;
+    }
+
+    .modal-close {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .modal-athlete-header {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
 
-    .athlete-headshot {
+    .modal-athlete-photo {
         max-width: 300px;
         margin: 0 auto;
     }
 
-    .athlete-name-row {
+    .modal-athlete-name {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .modal-social-links {
         justify-content: center;
     }
 
-    .athlete-name {
-        font-size: 2.2rem;
+    .modal-athlete-info {
+        gap: 1rem;
     }
 
-    .athlete-info {
-        gap: 1rem;
+    .modal-race-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
     }
 
     .race-gallery {
@@ -348,6 +610,18 @@ body.lightbox-open {
 }
 
 @media (max-width: 520px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-athlete-name {
+        font-size: 1.1rem;
+    }
+
+    .modal-race-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .race-gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
