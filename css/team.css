@@ -207,6 +207,9 @@ body.modal-open {
     text-transform: uppercase;
     color: var(--text-primary);
     margin-bottom: 2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .modal-social-links {
@@ -332,6 +335,8 @@ body.modal-open {
     font-size: 1.05rem;
     font-weight: 500;
     color: var(--text-muted);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* ==============================
@@ -563,12 +568,12 @@ body.lightbox-open {
     }
 
     .modal-content {
-        padding: 2rem;
+        padding: 3.5rem 1.5rem 2rem;
     }
 
     .modal-close {
-        top: 1.5rem;
-        right: 1.5rem;
+        top: 1rem;
+        right: 1rem;
     }
 
     .modal-athlete-header {
@@ -577,13 +582,15 @@ body.lightbox-open {
     }
 
     .modal-athlete-photo {
-        max-width: 300px;
+        max-width: 240px;
         margin: 0 auto;
     }
 
     .modal-athlete-name {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
         text-align: center;
+        line-height: 1.1;
+        padding: 0 0.5rem;
     }
 
     .modal-social-links {
@@ -618,12 +625,48 @@ body.lightbox-open {
         font-size: 1.1rem;
     }
 
+    .modal-content {
+        padding: 3rem 1rem 1.5rem;
+    }
+
+    .modal-close {
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 0.6rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .modal-athlete-photo {
+        max-width: 200px;
+    }
+
+    .modal-athlete-name {
+        font-size: 1.5rem;
+        line-height: 1.15;
+        padding: 0 0.25rem;
+    }
+
+    .modal-athlete-info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem 1rem;
+    }
+
+    .info-item {
+        min-width: 0;
+    }
+
+    .info-value {
+        font-size: 0.95rem;
+    }
+
     .modal-race-gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .race-gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .gallery-image {
