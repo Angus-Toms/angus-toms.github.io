@@ -33,77 +33,58 @@
 </section>
 
 <main class="gallery-page">
-    <section class="gallery-section">
-        <div class="gallery-container">
-            <div class="gallery-layout">
-                <div class="gallery-viewer">
-                    <div class="gallery-stage">
-                        <div class="gallery-frame">
-                            <img id="gallery-main-image" src="imgs/ebf_3.jpg" alt="Elijah Kwon racing at Tour of Guizhou Eco-Province" draggable="false">
-                            <div class="gallery-caption">
-                                <div id="gallery-main-rider" class="gallery-rider">Elijah Kwon</div>
-                                <div id="gallery-main-race" class="gallery-race">Tour of Guizhou Eco-Province</div>
-                            </div>
-                        </div>
+    <div class="photo-columns">
 
-                        <div class="gallery-controls">
-                            <button class="gallery-control" type="button" data-direction="prev">Previous</button>
-                            <div id="gallery-count" class="gallery-count">1 / 15</div>
-                            <button class="gallery-control" type="button" data-direction="next">Next</button>
-                        </div>
-                    </div>
-
-                    <div class="gallery-thumbs" role="list">
-                        <button class="gallery-thumb is-active" type="button" data-index="0" data-image="imgs/ebf_3.jpg" data-rider="Elijah Kwon" data-race="Tour of Guizhou Eco-Province" data-alt="Elijah Kwon racing at Tour of Guizhou Eco-Province" aria-pressed="true">
-                            <img src="imgs/ebf_3.jpg" alt="Elijah Kwon racing at Tour of Guizhou Eco-Province" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="1" data-image="imgs/ebf_4.jpg" data-rider="Thibault Fostier, Ed Morgan, Elijah Kwon, Tom Williams" data-race="Tour of Guizhou Eco-Province" data-alt="Team riders at Tour of Guizhou Eco-Province" aria-pressed="false">
-                            <img src="imgs/ebf_4.jpg" alt="Team riders at Tour of Guizhou Eco-Province" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="2" data-image="imgs/ebf_6.jpg" data-rider="Elijah Kwon" data-race="Tour of Lithuania" data-alt="Elijah Kwon at Tour of Lithuania" aria-pressed="false">
-                            <img src="imgs/ebf_6.jpg" alt="Elijah Kwon at Tour of Lithuania" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="3" data-image="imgs/ebf_2.jpg" data-rider="Thibault Fostier" data-race="Tour of Guizhou Eco-Province" data-alt="Thibault Fostier racing at Tour of Guizhou Eco-Province" aria-pressed="false">
-                            <img src="imgs/ebf_2.jpg" alt="Thibault Fostier racing at Tour of Guizhou Eco-Province" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="4" data-image="imgs/ebf_1.jpg" data-rider="Elijah Kwon" data-race="Tour of Guizhou Eco-Province" data-alt="Elijah Kwon racing in Guizhou" aria-pressed="false">
-                            <img src="imgs/ebf_1.jpg" alt="Elijah Kwon racing in Guizhou" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="5" data-image="imgs/ebf_5.jpg" data-rider="Finn McHenry, Elijah Kwon, Alex Ball" data-race="Tour of Guizhou Eco-Province" data-alt="Finn McHenry, Elijah Kwon, and Alex Ball at Tour of Guizhou Eco-Province" aria-pressed="false">
-                            <img src="imgs/ebf_5.jpg" alt="Finn McHenry, Elijah Kwon, and Alex Ball at Tour of Guizhou Eco-Province" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="6" data-image="imgs/ebf_7.jpg" data-rider="Finn McHenry, Elijah Kwon, Gabe Dellar" data-race="Tour of Kosovo" data-alt="Finn McHenry, Elijah Kwon, and Alex Ball at Tour of Kosovo" aria-pressed="false">
-                            <img src="imgs/ebf_7.jpg" alt="Finn McHenry, Elijah Kwon, and Alex Ball at Tour of Kosovo" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="7" data-image="imgs/ebf_8.jpg" data-rider="Elijah Kwon" data-race="Cambridge Criterium" data-alt="Elijah Kwon at Cambridge Criterium" aria-pressed="false">
-                            <img src="imgs/ebf_8.jpg" alt="Elijah Kwon at Cambridge Criterium" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="8" data-image="imgs/ebf_9.jpg" data-rider="Matti Dobbins, Craig Paterson, Sam Chisolm" data-race="Drummond Trophy" data-alt="Matti Dobbins, Craig Paterson, and Sam Chisolm at Drummond Trophy" aria-pressed="false">
-                            <img src="imgs/ebf_9.jpg" alt="Matti Dobbins, Craig Paterson, and Sam Chisolm at Drummond Trophy" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="9" data-image="imgs/ebf_10.jpg" data-rider="Elijah Kwon" data-race="Perth Criterium" data-alt="Elijah Kwon at Perth Criterium" aria-pressed="false">
-                            <img src="imgs/ebf_10.jpg" alt="Elijah Kwon at Perth Criterium" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="10" data-image="imgs/ebf_11.jpg" data-rider="Finn McHenry" data-race="CiCLE Classic" data-alt="Finn McHenry at CiCLE Classic" aria-pressed="false">
-                            <img src="imgs/ebf_11.jpg" alt="Finn McHenry at CiCLE Classic" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="11" data-image="imgs/ebf_12.jpg" data-rider="Sam Chisolm" data-race="Scottish National Road Race Championships" data-alt="Sam Chisolm at Scottish National Road Race Championships" aria-pressed="false">
-                            <img src="imgs/ebf_12.jpg" alt="Sam Chisolm at Scottish National Road Race Championships" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="12" data-image="imgs/ebf_15.jpg" data-rider="Mungo Toms" data-race="Tour of Lithuania" data-alt="Mungo Toms at Tour of Lithuania" aria-pressed="false">
-                            <img src="imgs/ebf_15.jpg" alt="Mungo Toms at Tour of Lithuania" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="13" data-image="imgs/ebf_13.jpg" data-rider="Lewis Reynolds, Sam Carrotte, Elijah Kwon, Craig Paterson, Scott Meldrum, Finn McHenry, Matti Dobbins" data-race="Drummond Trophy" data-alt="Team group at Drummond Trophy" aria-pressed="false">
-                            <img src="imgs/ebf_13.jpg" alt="Team group at Drummond Trophy" loading="lazy" draggable="false">
-                        </button>
-                        <button class="gallery-thumb" type="button" data-index="14" data-image="imgs/ebf_14.jpg" data-rider="Sam Chisolm, Louis Moore, Scott Meldrum" data-race="Scottish National Gravel Championships" data-alt="Sam Chisolm, Louis Moore, and Scott Meldrum at Scottish National Gravel Championships" aria-pressed="false">
-                            <img src="imgs/ebf_14.jpg" alt="Sam Chisolm, Louis Moore, and Scott Meldrum at Scottish National Gravel Championships" loading="lazy" draggable="false">
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div class="photo-item">
+            <img src="imgs/sam_ch/sam_ch_2.webp" alt="Sam wins the 2025 Scottish Road Race Championships" draggable="false">
+            <div class="photo-item-caption">Sam wins the 2025 Scottish Road Race Championships</div>
         </div>
-    </section>
+        <div class="photo-item">
+            <img src="imgs/elijah/elijah_1.webp" alt="Elijah on the attack at the 2025 Tour of Guizhou Eco-Province" draggable="false">
+            <div class="photo-item-caption">Elijah on the attack at the 2025 Tour of Guizhou Eco-Province</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/matti/matti_2.webp" alt="Matti racing the IP at the 2025 Scottish National Track Championships" draggable="false">
+            <div class="photo-item-caption">Matti racing the IP at the 2025 Scottish National Track Championships</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/sam_ch/sam_ch_1.webp" alt="Sam wears the stripes as 2025 Scottish Road Race Champion" draggable="false">
+            <div class="photo-item-caption">Sam wears the stripes as 2025 Scottish Road Race Champion</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/liam/liam_1.webp" alt="Liam Scott Douglas" draggable="false">
+            <div class="photo-item-caption">Liam Scott Douglas</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/elijah/elijah_2.webp" alt="Elijah at the 2025 Tour of Kosovo" draggable="false">
+            <div class="photo-item-caption">Elijah at the 2025 Tour of Kosovo</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/sam_ch/sam_ch_3.webp" alt="Sam at the 2025 CiCle Classic" draggable="false">
+            <div class="photo-item-caption">Sam at the 2025 CiCle Classic</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/matti/matti_1.webp" alt="Matti Dobbins" draggable="false">
+            <div class="photo-item-caption">Matti Dobbins</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/sam_ca/sam_ca_1.webp" alt="Sam Carrotte" draggable="false">
+            <div class="photo-item-caption">Sam Carrotte</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/liam/liam_2.webp" alt="Liam Scott Douglas" draggable="false">
+            <div class="photo-item-caption">Liam Scott Douglas</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/matti/matti_3.webp" alt="Matti Dobbins" draggable="false">
+            <div class="photo-item-caption">Matti Dobbins</div>
+        </div>
+        <div class="photo-item">
+            <img src="imgs/matti/matti_4.webp" alt="Matti Dobbins" draggable="false">
+            <div class="photo-item-caption">Matti Dobbins</div>
+        </div>
+
+    </div>
 </main>
 
 <script src="js/shared.js"></script>

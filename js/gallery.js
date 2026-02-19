@@ -1,80 +1,50 @@
-const thumbs = Array.from(document.querySelectorAll(".gallery-thumb"));
-const mainImage = document.getElementById("gallery-main-image");
-const riderLabel = document.getElementById("gallery-main-rider");
-const raceLabel = document.getElementById("gallery-main-race");
-const countLabel = document.getElementById("gallery-count");
-const controls = document.querySelectorAll("[data-direction]");
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <button class="lightbox-close" type="button" aria-label="Close">Close</button>
+        <figure class="lightbox-content">
+            <img class="lightbox-image" alt="">
+            <figcaption class="lightbox-caption"></figcaption>
+        </figure>
+    `;
+    document.body.appendChild(lightbox);
 
-let currentIndex = 0;
-const total = thumbs.length;
+    const lightboxImage = lightbox.querySelector('.lightbox-image');
+    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
 
-const getThumbRadius = () => {
-    if (window.matchMedia("(max-width: 720px)").matches) return 1;
-    if (window.matchMedia("(max-width: 1100px)").matches) return 2;
-    return 3;
-};
+    const open = (src, caption) => {
+        lightboxImage.src = src;
+        lightboxCaption.textContent = caption || '';
+        lightbox.classList.add('is-active');
+        document.body.classList.add('lightbox-open');
+    };
 
-const updateVisibleThumbs = () => {
-    if (!total) return;
-    const radius = getThumbRadius();
-    const orderMap = new Map();
+    const close = () => {
+        lightbox.classList.remove('is-active');
+        document.body.classList.remove('lightbox-open');
+        lightboxImage.src = '';
+    };
 
-    for (let offset = -radius; offset <= radius; offset += 1) {
-        const index = (currentIndex + offset + total) % total;
-        orderMap.set(index, offset + radius);
-    }
-
-    thumbs.forEach((thumb, index) => {
-        const isVisible = orderMap.has(index);
-        const order = orderMap.get(index);
-        const isEdge = isVisible && (order === 0 || order === radius * 2);
-        const isNeighbor = isVisible && index !== currentIndex;
-        thumb.classList.toggle("is-visible", isVisible);
-        thumb.classList.toggle("is-edge", isEdge);
-        thumb.classList.toggle("is-neighbor", isNeighbor);
-        thumb.setAttribute("aria-hidden", isVisible ? "false" : "true");
-
-        if (isVisible) {
-            thumb.style.order = order;
-        } else {
-            thumb.style.order = "";
-        }
-    });
-};
-
-const setActive = (nextIndex) => {
-    if (!total) return;
-    currentIndex = (nextIndex + total) % total;
-
-    const activeThumb = thumbs[currentIndex];
-    const { image, rider, race, alt } = activeThumb.dataset;
-
-    mainImage.src = image;
-    mainImage.alt = alt;
-    riderLabel.textContent = rider;
-    raceLabel.textContent = race;
-    countLabel.textContent = `${currentIndex + 1} / ${total}`;
-
-    thumbs.forEach((thumb, index) => {
-        const isActive = index === currentIndex;
-        thumb.classList.toggle("is-active", isActive);
-        thumb.setAttribute("aria-pressed", isActive ? "true" : "false");
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.lightbox-close')) return;
+        const item = e.target.closest('.photo-item');
+        if (!item) return;
+        const img = item.querySelector('img');
+        if (!img) return;
+        open(img.src, img.alt);
     });
 
-    updateVisibleThumbs();
-};
+    lightbox.querySelector('.lightbox-close').addEventListener('click', (e) => {
+        e.stopPropagation();
+        close();
+    });
 
-thumbs.forEach((thumb, index) => {
-    thumb.addEventListener("click", () => setActive(index));
-});
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) close();
+    });
 
-controls.forEach((button) => {
-    button.addEventListener("click", () => {
-        const direction = button.dataset.direction === "next" ? 1 : -1;
-        setActive(currentIndex + direction);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-active')) close();
     });
 });
-
-window.addEventListener("resize", updateVisibleThumbs);
-
-setActive(0);
