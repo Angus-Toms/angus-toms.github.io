@@ -134,36 +134,58 @@ function initializeTeamGrid() {
     });
 }
 
-// Lightbox functionality for race gallery images
+// Carousel lightbox for race gallery images in athlete modal
 let lightboxInstance = null;
 
 function initializeLightbox() {
-    // Only create lightbox once
-    if (lightboxInstance) {
-        return;
-    }
+    if (lightboxInstance) return;
 
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
     lightbox.innerHTML = `
-        <button class="lightbox-close" type="button" aria-label="Close lightbox">Close</button>
+        <button class="lightbox-close" type="button" aria-label="Close lightbox">CLOSE</button>
+        <button class="lightbox-prev" type="button" aria-label="Previous photo">&#8592;</button>
         <figure class="lightbox-content">
             <img class="lightbox-image" alt="">
             <figcaption class="lightbox-caption"></figcaption>
         </figure>
+        <button class="lightbox-next" type="button" aria-label="Next photo">&#8594;</button>
+        <div class="lightbox-counter"></div>
     `;
 
     document.body.appendChild(lightbox);
     lightboxInstance = lightbox;
 
-    const lightboxImage = lightbox.querySelector('.lightbox-image');
+    const lightboxImage   = lightbox.querySelector('.lightbox-image');
     const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-    const closeButton = lightbox.querySelector('.lightbox-close');
+    const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+    const closeButton     = lightbox.querySelector('.lightbox-close');
+    const prevButton      = lightbox.querySelector('.lightbox-prev');
+    const nextButton      = lightbox.querySelector('.lightbox-next');
 
-    const openLightbox = (source, caption) => {
-        lightboxImage.src = source;
-        lightboxImage.alt = caption || 'Race photo';
-        lightboxCaption.textContent = caption || '';
+    let currentImages = [];
+    let currentIndex  = 0;
+    let isAnimating   = false;
+
+    const updateCounter = () => {
+        lightboxCounter.textContent = currentImages.length > 1
+            ? `${currentIndex + 1} / ${currentImages.length}`
+            : '';
+    };
+
+    const openLightbox = (images, startIndex) => {
+        currentImages = images;
+        currentIndex  = startIndex;
+        lightboxImage.style.transition = 'none';
+        lightboxImage.style.opacity    = '1';
+        lightboxImage.style.transform  = 'translateX(0)';
+        lightboxImage.src = currentImages[currentIndex].src;
+        lightboxImage.alt = currentImages[currentIndex].alt;
+        lightboxCaption.textContent = currentImages[currentIndex].alt || '';
+        updateCounter();
+        // Show/hide nav based on whether there are multiple images
+        prevButton.style.display = currentImages.length > 1 ? '' : 'none';
+        nextButton.style.display = currentImages.length > 1 ? '' : 'none';
         lightbox.classList.add('is-active');
         document.body.classList.add('lightbox-open');
     };
@@ -174,32 +196,67 @@ function initializeLightbox() {
         lightboxImage.src = '';
     };
 
-    // Use event delegation on document for all gallery images
-    document.addEventListener('click', (event) => {
-        // Check if click is on or inside a gallery-image
-        const galleryItem = event.target.closest('.gallery-image');
-        if (!galleryItem) {
-            return;
-        }
+    const slide = (direction) => {
+        if (isAnimating || currentImages.length <= 1) return;
+        isAnimating = true;
 
-        // Make sure we're not clicking on the modal close button or other controls
-        if (event.target.closest('.modal-close, .lightbox-close')) {
-            return;
-        }
+        const nextIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+        const outX = direction > 0 ? '-50px' : '50px';
+        const inX  = direction > 0 ? '60px'  : '-60px';
+
+        lightboxImage.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        lightboxImage.style.opacity    = '0';
+        lightboxImage.style.transform  = `translateX(${outX})`;
+
+        setTimeout(() => {
+            currentIndex = nextIndex;
+            lightboxImage.src = currentImages[currentIndex].src;
+            lightboxImage.alt = currentImages[currentIndex].alt;
+            lightboxCaption.textContent = currentImages[currentIndex].alt || '';
+            updateCounter();
+
+            lightboxImage.style.transition = 'none';
+            lightboxImage.style.transform  = `translateX(${inX})`;
+            lightboxImage.offsetHeight; // force reflow
+
+            lightboxImage.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            lightboxImage.style.opacity    = '1';
+            lightboxImage.style.transform  = 'translateX(0)';
+
+            setTimeout(() => { isAnimating = false; }, 310);
+        }, 260);
+    };
+
+    // Click delegation — collects sibling images for carousel context
+    document.addEventListener('click', (event) => {
+        if (event.target.closest('.modal-close, .lightbox-close, .lightbox-prev, .lightbox-next')) return;
+
+        const galleryItem = event.target.closest('.gallery-image');
+        if (!galleryItem) return;
 
         const image = galleryItem.querySelector('img');
-        if (!image) {
-            return;
+        if (!image) return;
+
+        // Gather all images from the same race-gallery container
+        const gallery = galleryItem.closest('.race-gallery, .modal-race-gallery');
+        let images;
+        if (gallery) {
+            images = Array.from(gallery.querySelectorAll('.gallery-image img'))
+                .map(img => ({ src: img.src, alt: img.alt }));
+        } else {
+            images = [{ src: image.src, alt: image.alt }];
         }
 
+        const startIndex = images.findIndex(i => i.src === image.src);
         event.stopPropagation();
-        openLightbox(image.src, image.alt);
+        openLightbox(images, startIndex >= 0 ? startIndex : 0);
     });
 
+    prevButton.addEventListener('click', (e) => { e.stopPropagation(); slide(-1); });
+    nextButton.addEventListener('click', (e) => { e.stopPropagation(); slide(1); });
+
     lightbox.addEventListener('click', (event) => {
-        if (event.target === lightbox) {
-            closeLightbox();
-        }
+        if (event.target === lightbox) closeLightbox();
     });
 
     closeButton.addEventListener('click', (event) => {
@@ -208,8 +265,9 @@ function initializeLightbox() {
     });
 
     document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && lightbox.classList.contains('is-active')) {
-            closeLightbox();
-        }
+        if (!lightbox.classList.contains('is-active')) return;
+        if (event.key === 'Escape')     closeLightbox();
+        if (event.key === 'ArrowRight') slide(1);
+        if (event.key === 'ArrowLeft')  slide(-1);
     });
 }

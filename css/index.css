@@ -66,9 +66,10 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     z-index: 1;
     height: 75vh;
     overflow: hidden;
+    border-radius: 16px;
     box-shadow:
         0 40px 80px rgba(0, 0, 0, 0.6),
-        0 0 60px rgba(195, 163, 255, 0.15);
+        0 0 60px rgba(1, 74, 89, 0.2);
 }
 
 .hero-image-main::before {
@@ -88,7 +89,7 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(1.15) contrast(1.2) brightness(0.88);
+    filter: contrast(1.08) brightness(0.9);
 }
 
 .hero-image-caption {
@@ -256,8 +257,8 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .section-link:hover {
-    color: var(--red-light);
-    border-bottom-color: var(--text-primary);
+    color: var(--text-primary);
+    border-bottom-width: 6px;
 }
 
 .section-link:hover::after {
@@ -271,6 +272,7 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     background: rgba(255, 255, 255, 0.04);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
     position: relative;
+    border-radius: 12px;
 }
 
 .section-image::before {
@@ -290,7 +292,7 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(1.1) contrast(1.15) brightness(0.9);
+    filter: contrast(1.05) brightness(0.95);
 }
 
 /* ==============================

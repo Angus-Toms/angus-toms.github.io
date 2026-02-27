@@ -34,6 +34,7 @@
     overflow: hidden;
     margin-bottom: 1rem;
     transition: box-shadow 0.3s ease;
+    border-radius: 12px;
 }
 
 .grid-athlete-card:hover .grid-athlete-photo {
@@ -57,7 +58,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(1.15) contrast(1.18) brightness(0.88) hue-rotate(-5deg);
+    filter: contrast(1.05) brightness(0.95);
 }
 
 .grid-athlete-name {
@@ -178,6 +179,7 @@ body.modal-open {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(1, 74, 89, 0.2);
     position: relative;
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .modal-athlete-photo::before {
@@ -197,7 +199,7 @@ body.modal-open {
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(1.15) contrast(1.18) brightness(0.88) hue-rotate(-5deg);
+    filter: contrast(1.05) brightness(0.95);
 }
 
 .modal-athlete-details {
@@ -257,6 +259,7 @@ body.modal-open {
     margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .athlete-headshot::before {
@@ -279,7 +282,7 @@ body.modal-open {
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none;
-    filter: saturate(1.15) contrast(1.18) brightness(0.88) hue-rotate(-5deg);
+    filter: contrast(1.05) brightness(0.95);
 }
 
 .headshot-placeholder {
@@ -395,6 +398,7 @@ body.modal-open {
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid rgba(1, 74, 89, 0.2);
+    border-radius: 10px;
 }
 
 .gallery-image:hover {
@@ -422,7 +426,7 @@ body.modal-open {
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none;
-    filter: saturate(1.15) contrast(1.18) brightness(0.88) hue-rotate(-5deg);
+    filter: contrast(1.05) brightness(0.95);
 }
 
 body.lightbox-open {
@@ -432,15 +436,15 @@ body.lightbox-open {
 .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(0, 20, 30, 0.85);
+    background: rgba(0, 20, 30, 0.96);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.35s ease;
     z-index: 400;
-    padding: 3rem;
+    padding: 3rem 6rem;
 }
 
 .lightbox.is-active {
@@ -449,32 +453,91 @@ body.lightbox-open {
 }
 
 .lightbox-content {
+    position: relative;
     max-width: 90vw;
     max-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
+    overflow: hidden;
 }
 
 .lightbox-image {
     max-width: 100%;
-    max-height: calc(90vh - 4rem);
+    max-height: calc(90vh - 5rem);
     width: auto;
     height: auto;
     object-fit: contain;
-    border-radius: 18px;
+    border-radius: 14px;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+    display: block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .lightbox-caption {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--text-faint);
     text-align: center;
     max-width: 100%;
+    transition: opacity 0.2s ease;
+}
+
+/* Carousel nav arrows */
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 20, 30, 0.6);
+    border: 2px solid rgba(121, 44, 77, 0.4);
+    color: var(--text-primary);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 0;
+    transition: all 0.2s ease;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    line-height: 1;
+}
+
+.lightbox-prev {
+    left: -5rem;
+}
+
+.lightbox-next {
+    right: -5rem;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(121, 44, 77, 0.3);
+    border-color: rgba(121, 44, 77, 0.9);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
 }
 
 .lightbox-close {
