@@ -50,7 +50,7 @@ body {
         ),
         linear-gradient(135deg, #0a1f2e 0%, #001a24 25%, #003146 60%, #0d2a3a 100%);
     margin: 0;
-    font-family: 'Courier Prime', monospace;
+    font-family: 'DM Sans', sans-serif;
     color: var(--text-primary);
     overflow-x: hidden;
 }
@@ -159,13 +159,13 @@ body {
 }
 
 .page-subtitle {
-    font-family: 'Courier Prime', monospace;
-    font-size: 1rem;
-    line-height: 1.8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
     color: var(--text-muted);
     max-width: 600px;
     margin: 0 auto;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 /* ==============================

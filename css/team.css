@@ -342,9 +342,9 @@ body.modal-open {
 }
 
 .info-value {
-    font-family: 'Courier Prime', monospace;
-    font-size: 1.05rem;
-    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
     color: var(--text-muted);
     word-wrap: break-word;
     overflow-wrap: break-word;

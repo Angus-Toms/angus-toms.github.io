@@ -220,12 +220,12 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .section-content p {
-    font-family: 'Courier Prime', monospace;
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
     color: var(--text-muted);
     max-width: 70ch;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .section-link {
