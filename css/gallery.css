@@ -56,28 +56,6 @@ body {
     filter: contrast(1.05) brightness(1.0);
 }
 
-/* Caption overlay */
-.photo-item-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 3rem 1.25rem 1rem;
-    background: linear-gradient(to top, rgba(0, 20, 30, 0.88) 0%, transparent 100%);
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-primary);
-}
-
-.photo-item:hover .photo-item-caption {
-    opacity: 1;
-}
 
 /* ==============================
  LIGHTBOX / CAROUSEL

@@ -92,19 +92,6 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     filter: contrast(1.08) brightness(0.9);
 }
 
-.hero-image-caption {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    right: 2rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-primary);
-    z-index: 2;
-}
 
 /* Statistics */
 .hero-stats {
