@@ -57,20 +57,20 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(0.8) contrast(1.08) brightness(0.95);
+    filter: saturate(1.15) contrast(1.18) brightness(0.88) hue-rotate(-5deg);
 }
 
 .grid-athlete-name {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.3rem;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.0;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--text-primary);
     margin-bottom: 0.3rem;
     overflow-wrap: break-word;
     word-break: break-word;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .grid-athlete-role {
@@ -106,7 +106,7 @@
 .athlete-modal {
     position: fixed;
     inset: 0;
-    background: rgba(12, 6, 24, 0.95);
+    background: rgba(0, 20, 30, 0.95);
     backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
@@ -197,7 +197,7 @@ body.modal-open {
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(0.8) contrast(1.08) brightness(0.95);
+    filter: saturate(1.15) contrast(1.18) brightness(0.88) hue-rotate(-5deg);
 }
 
 .modal-athlete-details {
@@ -206,17 +206,17 @@ body.modal-open {
 }
 
 .modal-athlete-name {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 3rem;
-    line-height: 0.95;
-    letter-spacing: 0.02em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    line-height: 0.88;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--text-primary);
     margin-bottom: 2rem;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .modal-social-links {
@@ -279,7 +279,7 @@ body.modal-open {
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none;
-    filter: saturate(0.8) contrast(1.08) brightness(0.95);
+    filter: saturate(1.15) contrast(1.18) brightness(0.88) hue-rotate(-5deg);
 }
 
 .headshot-placeholder {
@@ -303,12 +303,12 @@ body.modal-open {
 }
 
 .athlete-name {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 3rem;
-    line-height: 0.95;
-    letter-spacing: 0.02em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    line-height: 0.88;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .athlete-details {
@@ -422,7 +422,7 @@ body.modal-open {
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none;
-    filter: saturate(0.8) contrast(1.08) brightness(0.95);
+    filter: saturate(1.15) contrast(1.18) brightness(0.88) hue-rotate(-5deg);
 }
 
 body.lightbox-open {
@@ -432,7 +432,7 @@ body.lightbox-open {
 .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(12, 6, 24, 0.85);
+    background: rgba(0, 20, 30, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;

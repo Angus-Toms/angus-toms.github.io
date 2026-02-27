@@ -149,13 +149,13 @@ body {
 }
 
 .page-title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: clamp(3rem, 8vw, 6rem);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.88;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .page-subtitle {
