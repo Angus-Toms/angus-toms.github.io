@@ -162,7 +162,6 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 ============================== */
 .section {
     padding: 8rem 4rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
 }
 
