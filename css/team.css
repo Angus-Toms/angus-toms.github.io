@@ -29,7 +29,7 @@
     width: 100%;
     aspect-ratio: 3 / 4;
     background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(195, 163, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(1, 74, 89, 0.15);
     position: relative;
     overflow: hidden;
     margin-bottom: 1rem;
@@ -37,7 +37,7 @@
 }
 
 .grid-athlete-card:hover .grid-athlete-photo {
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(195, 163, 255, 0.25);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(121, 44, 77, 0.3);
 }
 
 .grid-athlete-photo::before {
@@ -47,7 +47,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(123, 63, 240, 0.15) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(1, 74, 89, 0.15) 0%, transparent 50%);
     z-index: 1;
     pointer-events: none;
 }
@@ -134,7 +134,7 @@ body.modal-open {
     border-radius: 20px;
     padding: 3rem;
     position: relative;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(123, 63, 240, 0.15);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(1, 74, 89, 0.2);
     margin: auto;
 }
 
@@ -172,7 +172,7 @@ body.modal-open {
     width: 100%;
     aspect-ratio: 3 / 4;
     background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(195, 163, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(1, 74, 89, 0.2);
     position: relative;
     overflow: hidden;
 }
@@ -184,7 +184,7 @@ body.modal-open {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(123, 63, 240, 0.15) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(1, 74, 89, 0.15) 0%, transparent 50%);
     z-index: 1;
     pointer-events: none;
 }
@@ -249,7 +249,7 @@ body.modal-open {
     width: 100%;
     aspect-ratio: 3 / 4;
     background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(195, 163, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(1, 74, 89, 0.2);
     margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
@@ -262,7 +262,7 @@ body.modal-open {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(123, 63, 240, 0.15) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(1, 74, 89, 0.15) 0%, transparent 50%);
     z-index: 1;
     pointer-events: none;
 }
@@ -359,7 +359,7 @@ body.modal-open {
 }
 
 .social-link:hover {
-    color: var(--purple-300);
+    color: var(--red-light);
 }
 
 .social-link svg {
@@ -393,7 +393,7 @@ body.modal-open {
 
 .gallery-image:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(195, 163, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(121, 44, 77, 0.25);
 }
 
 .gallery-image::before {

@@ -23,7 +23,7 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     right: 0;
     width: 50%;
     height: 100%;
-    background: linear-gradient(to left, rgba(123, 63, 240, 0.08) 0%, transparent 100%);
+    background: linear-gradient(to left, rgba(121, 44, 77, 0.12) 0%, transparent 100%);
     pointer-events: none;
     z-index: 0;
 }
@@ -50,9 +50,11 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .hero-title-accent {
-    color: var(--purple-300);
+    color: var(--red-light);
     font-size: clamp(3rem, 8vw, 9.5rem);
     margin-top: -0.5rem;
+    font-weight: 900;
+    text-shadow: 0 4px 12px rgba(121, 44, 77, 0.3);
 }
 
 /* Main hero image */
@@ -116,11 +118,11 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 .hero-stats-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--purple-300);
-    opacity: 0.8;
+    color: var(--red-light);
+    opacity: 0.95;
     white-space: nowrap;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
@@ -204,7 +206,7 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .section-title-link:hover {
-    color: var(--purple-300);
+    color: var(--red-light);
 }
 
 .section-content {
@@ -227,20 +229,20 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     gap: 0.5rem;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--purple-300);
+    color: var(--red-light);
     text-decoration: none;
     padding: 1rem 2rem;
-    border: 1px solid var(--purple-300);
+    border: 2px solid var(--red-light);
     transition: all 0.3s ease;
     width: fit-content;
 }
 
 .section-link:hover {
-    background: var(--purple-300);
-    color: var(--bg-dark);
+    background: var(--red-light);
+    color: #003146;
 }
 
 .section-image {
@@ -259,7 +261,7 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(123, 63, 240, 0.1) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(1, 74, 89, 0.15) 0%, transparent 50%);
     z-index: 1;
     pointer-events: none;
 }
@@ -309,14 +311,14 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(195, 163, 255, 0.15) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(121, 44, 77, 0.2) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .sponsor-logo:hover {
     background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(195, 163, 255, 0.3);
+    border-color: rgba(121, 44, 77, 0.4);
     transform: translateY(-4px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
