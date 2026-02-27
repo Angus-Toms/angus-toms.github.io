@@ -61,23 +61,25 @@
 }
 
 .grid-athlete-name {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 1.3rem;
     line-height: 1.1;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--text-primary);
     margin-bottom: 0.3rem;
     overflow-wrap: break-word;
     word-break: break-word;
+    font-weight: 700;
 }
 
 .grid-athlete-role {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--text-faint);
+    font-weight: 600;
 }
 
 /* Hide detailed cards - they're used as data source for modal */
@@ -129,12 +131,12 @@ body.modal-open {
 .modal-content {
     max-width: 1200px;
     width: 100%;
-    background: linear-gradient(135deg, rgba(18, 9, 36, 0.95) 0%, rgba(12, 6, 24, 0.98) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(0, 49, 70, 0.98) 0%, rgba(3, 30, 40, 0.95) 100%);
+    border: 2px solid rgba(121, 44, 77, 0.4);
+    border-radius: 0;
     padding: 3rem;
     position: relative;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(1, 74, 89, 0.2);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(121, 44, 77, 0.3);
     margin: auto;
 }
 
@@ -142,23 +144,24 @@ body.modal-open {
     position: absolute;
     top: 2rem;
     right: 2rem;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: 2px solid rgba(121, 44, 77, 0.5);
     color: var(--text-primary);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 0.6rem 0.9rem;
+    padding: 0.6rem 1rem;
     cursor: pointer;
-    border-radius: 999px;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    border-radius: 0;
+    transition: all 0.2s ease;
     z-index: 10;
+    font-weight: 700;
 }
 
 .modal-close:hover {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(121, 44, 77, 0.2);
+    border-color: rgba(121, 44, 77, 0.8);
 }
 
 .modal-athlete-header {
@@ -203,16 +206,17 @@ body.modal-open {
 }
 
 .modal-athlete-name {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 3rem;
     line-height: 0.95;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--text-primary);
     margin-bottom: 2rem;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    font-weight: 700;
 }
 
 .modal-social-links {
@@ -299,11 +303,12 @@ body.modal-open {
 }
 
 .athlete-name {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 3rem;
     line-height: 0.95;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
+    font-weight: 700;
 }
 
 .athlete-details {
@@ -325,18 +330,18 @@ body.modal-open {
 }
 
 .info-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.65rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--text-faint);
 }
 
 .info-value {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Courier Prime', monospace;
     font-size: 1.05rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--text-muted);
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -389,6 +394,7 @@ body.modal-open {
     position: relative;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(1, 74, 89, 0.2);
 }
 
 .gallery-image:hover {
@@ -475,23 +481,24 @@ body.lightbox-open {
     position: absolute;
     top: 3.5rem;
     right: 3.5rem;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: 2px solid rgba(121, 44, 77, 0.5);
     color: var(--text-primary);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 0.6rem 0.9rem;
+    padding: 0.6rem 1rem;
     cursor: pointer;
-    border-radius: 999px;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    border-radius: 0;
+    transition: all 0.2s ease;
     z-index: 10;
+    font-weight: 700;
 }
 
 .lightbox-close:hover {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(121, 44, 77, 0.2);
+    border-color: rgba(121, 44, 77, 0.8);
 }
 
 @media (max-width: 768px) {

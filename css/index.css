@@ -37,11 +37,12 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .hero-title {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     line-height: 0.85;
-    letter-spacing: -0.03em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     position: relative;
+    font-weight: 700;
 }
 
 .hero-title-line {
@@ -116,10 +117,10 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .hero-stats-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.65rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--red-light);
     opacity: 0.95;
@@ -137,18 +138,19 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .hero-stat-number {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 4.5rem;
     line-height: 0.9;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
     color: var(--text-primary);
+    font-weight: 700;
 }
 
 .hero-stat-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--text-faint);
     line-height: 1.5;
@@ -181,21 +183,23 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .section-number {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 4rem;
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
     color: rgba(255, 255, 255, 0.1);
     position: relative;
+    font-weight: 700;
 }
 
 .section-title {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 2.5rem;
     line-height: 0.9;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.01em;
     text-transform: uppercase;
     position: relative;
+    font-weight: 700;
 }
 
 .section-title-link {
@@ -216,21 +220,22 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
 }
 
 .section-content p {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Courier Prime', monospace;
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text-muted);
     max-width: 70ch;
+    font-weight: 400;
 }
 
 .section-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--red-light);
     text-decoration: none;
