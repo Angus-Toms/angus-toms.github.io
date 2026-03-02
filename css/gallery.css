@@ -128,23 +128,22 @@ body.lightbox-open {
     position: absolute;
     top: 2rem;
     right: 2rem;
-    background: transparent;
-    border: 2px solid rgba(121, 44, 77, 0.5);
+    background: var(--red-light);
+    border: none;
     color: var(--text-primary);
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 0.6rem 1rem;
+    padding: 0.75rem 1.25rem;
     cursor: pointer;
-    border-radius: 0;
-    transition: all 0.2s ease;
+    border-radius: 4px;
+    transition: background 0.2s ease;
     font-weight: 700;
 }
 
 .lightbox-close:hover {
-    background: rgba(121, 44, 77, 0.2);
-    border-color: rgba(121, 44, 77, 0.8);
+    background: var(--red-dark);
 }
 
 /* Carousel nav arrows */
@@ -232,8 +231,8 @@ body.lightbox-open {
     }
 
     .lightbox-close {
-        top: 1.25rem;
-        right: 1.25rem;
+        top: 1.5rem;
+        right: 1.5rem;
     }
 }
 
@@ -258,7 +257,5 @@ body.lightbox-open {
     .lightbox-close {
         top: 1rem;
         right: 1rem;
-        font-size: 0.6rem;
-        padding: 0.5rem 0.75rem;
     }
 }
