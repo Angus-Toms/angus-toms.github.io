@@ -1,0 +1,5 @@
+# Claude Code
+.claude/worktrees/
+
+# macOS
+.DS_Store
