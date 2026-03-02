@@ -147,18 +147,14 @@ function initializeLightbox() {
         <button class="lightbox-prev" type="button" aria-label="Previous photo">&#8592;</button>
         <figure class="lightbox-content">
             <img class="lightbox-image" alt="">
-            <figcaption class="lightbox-caption"></figcaption>
         </figure>
         <button class="lightbox-next" type="button" aria-label="Next photo">&#8594;</button>
-        <div class="lightbox-counter"></div>
     `;
 
     document.body.appendChild(lightbox);
     lightboxInstance = lightbox;
 
     const lightboxImage   = lightbox.querySelector('.lightbox-image');
-    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
-    const lightboxCounter = lightbox.querySelector('.lightbox-counter');
     const closeButton     = lightbox.querySelector('.lightbox-close');
     const prevButton      = lightbox.querySelector('.lightbox-prev');
     const nextButton      = lightbox.querySelector('.lightbox-next');
@@ -166,12 +162,6 @@ function initializeLightbox() {
     let currentImages = [];
     let currentIndex  = 0;
     let isAnimating   = false;
-
-    const updateCounter = () => {
-        lightboxCounter.textContent = currentImages.length > 1
-            ? `${currentIndex + 1} / ${currentImages.length}`
-            : '';
-    };
 
     const openLightbox = (images, startIndex) => {
         currentImages = images;
@@ -181,8 +171,6 @@ function initializeLightbox() {
         lightboxImage.style.transform  = 'translateX(0)';
         lightboxImage.src = currentImages[currentIndex].src;
         lightboxImage.alt = currentImages[currentIndex].alt;
-        lightboxCaption.textContent = currentImages[currentIndex].alt || '';
-        updateCounter();
         // Show/hide nav based on whether there are multiple images
         prevButton.style.display = currentImages.length > 1 ? '' : 'none';
         nextButton.style.display = currentImages.length > 1 ? '' : 'none';
@@ -212,8 +200,6 @@ function initializeLightbox() {
             currentIndex = nextIndex;
             lightboxImage.src = currentImages[currentIndex].src;
             lightboxImage.alt = currentImages[currentIndex].alt;
-            lightboxCaption.textContent = currentImages[currentIndex].alt || '';
-            updateCounter();
 
             lightboxImage.style.transition = 'none';
             lightboxImage.style.transform  = `translateX(${inX})`;

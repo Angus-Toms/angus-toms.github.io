@@ -17,23 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
         <button class="lightbox-prev" type="button" aria-label="Previous photo">&#8592;</button>
         <figure class="lightbox-content">
             <img class="lightbox-image" alt="">
-            <figcaption class="lightbox-caption"></figcaption>
         </figure>
         <button class="lightbox-next" type="button" aria-label="Next photo">&#8594;</button>
-        <div class="lightbox-counter"></div>
     `;
     document.body.appendChild(lightbox);
 
     const img      = lightbox.querySelector('.lightbox-image');
-    const caption  = lightbox.querySelector('.lightbox-caption');
-    const counter  = lightbox.querySelector('.lightbox-counter');
     const prevBtn  = lightbox.querySelector('.lightbox-prev');
     const nextBtn  = lightbox.querySelector('.lightbox-next');
     const closeBtn = lightbox.querySelector('.lightbox-close');
-
-    const updateCounter = () => {
-        counter.textContent = `${currentIndex + 1} / ${images.length}`;
-    };
 
     const open = (index) => {
         currentIndex = index;
@@ -42,8 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         img.style.transform = 'translateX(0)';
         img.src = images[currentIndex].src;
         img.alt = images[currentIndex].alt;
-        caption.textContent = images[currentIndex].alt || '';
-        updateCounter();
         lightbox.classList.add('is-active');
         document.body.classList.add('lightbox-open');
     };
@@ -70,8 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = nextIndex;
             img.src = images[currentIndex].src;
             img.alt = images[currentIndex].alt;
-            caption.textContent = images[currentIndex].alt || '';
-            updateCounter();
 
             // Reset to entry position without transition, then slide in
             img.style.transition = 'none';

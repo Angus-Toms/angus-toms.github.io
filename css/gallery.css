@@ -1,5 +1,5 @@
 /* ==============================
- GALLERY PAGE STYLES
+   GALLERY PAGE STYLES
 ============================== */
 body {
     overflow-y: auto;
@@ -13,7 +13,7 @@ body {
 }
 
 /* ==============================
- MASONRY COLUMNS
+   MASONRY COLUMNS
 ============================== */
 .photo-columns {
     columns: 3;
@@ -58,7 +58,7 @@ body {
 
 
 /* ==============================
- LIGHTBOX / CAROUSEL
+   LIGHTBOX / CAROUSEL
 ============================== */
 body.lightbox-open {
     overflow: hidden;
@@ -201,7 +201,7 @@ body.lightbox-open {
 }
 
 /* ==============================
- RESPONSIVE
+   RESPONSIVE
 ============================== */
 @media (max-width: 1024px) {
     .gallery-page {
