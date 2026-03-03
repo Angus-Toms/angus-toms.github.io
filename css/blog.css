@@ -7,13 +7,17 @@ body {
     min-height: 100vh;
 }
 
-.blog-section .section-container {
-    grid-template-columns: 1fr;
+.page-hero {
+    padding-bottom: 2rem;
+}
+
+.blog-section {
+    padding: 4rem 4rem;
 }
 
 .blog-section .section-title {
-    font-size: 2.5rem;
-    line-height: 0.9;
+    font-size: 2rem;
+    line-height: 0.95;
     margin-bottom: 0;
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 700;
@@ -31,27 +35,13 @@ body {
     margin-bottom: 0.6rem;
 }
 
-.blog-image {
-    position: relative;
-}
-
-.blog-image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 2.5rem 2rem 1.75rem;
-    background: linear-gradient(to top, rgba(0, 10, 20, 0.85) 0%, rgba(0, 10, 20, 0.4) 60%, transparent 100%);
-    z-index: 2;
+.blog-gallery {
+    margin-bottom: 1.5rem;
 }
 
 .blog-entry {
     display: flex;
     flex-direction: column;
-}
-
-.blog-entry .section-image {
-    margin-bottom: 1.5rem;
 }
 
 .entry-meta {
@@ -64,7 +54,7 @@ body {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-faint);
-    margin-bottom: 1.5rem;
+    margin-top: 1.25rem;
 }
 
 .meta-separator {
@@ -135,6 +125,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .blog-section {
+        padding: 3rem 2rem;
+    }
+
     .blog-section .section-title {
         font-size: 2rem;
     }
@@ -150,6 +144,10 @@ body {
 }
 
 @media (max-width: 520px) {
+    .blog-section {
+        padding: 2.5rem 1.5rem;
+    }
+
     .blog-section .section-title {
         font-size: 1.75rem;
     }
