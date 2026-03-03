@@ -1,10 +1,66 @@
+// ==============================
+// GALLERY IMAGE LIST
+// Edit this array to add / remove / reorder photos
+// ==============================
+const GALLERY_IMAGES = [
+    { src: 'imgs/general/general_1.webp',   alt: 'EBF RT' },
+    { src: 'imgs/sam_ch/sam_ch_1.webp',     alt: 'Sam — 2025 Scottish Road Race Champion' },
+    { src: 'imgs/general/general_2.webp',   alt: 'EBF RT' },
+    { src: 'imgs/elijah/elijah_1.webp',     alt: 'Elijah on the attack at the 2025 Tour of Guizhou' },
+    { src: 'imgs/general/general_3.webp',   alt: 'EBF RT' },
+    { src: 'imgs/craig/craig_1.webp',       alt: 'Craig' },
+    { src: 'imgs/general/general_4.webp',   alt: 'EBF RT' },
+    { src: 'imgs/matti/matti_3.webp',       alt: 'Matti Dobbins' },
+    { src: 'imgs/general/general_5.webp',   alt: 'EBF RT' },
+    { src: 'imgs/sam_ca/sam_ca_2.webp',     alt: 'Sam Carrotte' },
+    { src: 'imgs/general/general_6.webp',   alt: 'EBF RT' },
+    { src: 'imgs/mungo/mungo_1.webp',       alt: 'Mungo' },
+    { src: 'imgs/general/general_7.webp',   alt: 'EBF RT' },
+    { src: 'imgs/finn/finn_2.webp',         alt: 'Finn' },
+    { src: 'imgs/general/general_8.webp',   alt: 'EBF RT' },
+    { src: 'imgs/sam_ch/sam_ch_2.webp',     alt: 'Sam wins the 2025 Scottish Road Race Championships' },
+    { src: 'imgs/general/general_9.webp',   alt: 'EBF RT' },
+    { src: 'imgs/elijah/elijah_2.webp',     alt: 'Elijah at the 2025 Tour of Kosovo' },
+    { src: 'imgs/general/general_10.webp',  alt: 'EBF RT' },
+    { src: 'imgs/craig/craig_2.webp',       alt: 'Craig' },
+    { src: 'imgs/general/general_11.webp',  alt: 'EBF RT' },
+    { src: 'imgs/matti/matti_4.webp',       alt: 'Matti Dobbins' },
+    { src: 'imgs/general/general_12.webp',  alt: 'EBF RT' },
+    { src: 'imgs/sam_ca/sam_ca_3.webp',     alt: 'Sam Carrotte' },
+    { src: 'imgs/general/general_13.webp',  alt: 'EBF RT' },
+    { src: 'imgs/mungo/mungo_2.webp',       alt: 'Mungo' },
+    { src: 'imgs/general/general_14.webp',  alt: 'EBF RT' },
+    { src: 'imgs/finn/finn_3.webp',         alt: 'Finn' },
+    { src: 'imgs/general/general_15.webp',  alt: 'EBF RT' },
+    { src: 'imgs/sam_ch/sam_ch_3.webp',     alt: 'Sam at the 2025 CiCle Classic' },
+    { src: 'imgs/general/general_16.webp',  alt: 'EBF RT' },
+    { src: 'imgs/elijah/elijah_3.webp',     alt: 'Elijah' },
+    { src: 'imgs/general/general_17.webp',  alt: 'EBF RT' },
+    { src: 'imgs/craig/craig_3.webp',       alt: 'Craig' },
+    { src: 'imgs/general/general_18.webp',  alt: 'EBF RT' },
+    { src: 'imgs/sam_ch/sam_ch_4.webp',     alt: 'Sam' },
+    { src: 'imgs/elijah/elijah_4.webp',     alt: 'Elijah' },
+    { src: 'imgs/sam_ca/sam_ca_4.webp',     alt: 'Sam Carrotte' },
+    { src: 'imgs/mungo/mungo_3.webp',       alt: 'Mungo' },
+    { src: 'imgs/finn/finn_4.webp',         alt: 'Finn' },
+];
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Collect all gallery images into a navigable array
-    const photoItems = Array.from(document.querySelectorAll('.photo-item'));
-    const images = photoItems
-        .map(item => item.querySelector('img'))
-        .filter(Boolean)
-        .map(img => ({ src: img.src, alt: img.alt }));
+    const container = document.querySelector('.photo-columns');
+
+    // Render images from list
+    GALLERY_IMAGES.forEach((image, index) => {
+        const item = document.createElement('div');
+        item.className = 'photo-item';
+        item.dataset.index = index;
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.alt = image.alt;
+        img.draggable = false;
+        img.loading = 'lazy';
+        item.appendChild(img);
+        container.appendChild(item);
+    });
 
     let currentIndex = 0;
     let isAnimating = false;
@@ -32,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
         img.style.transition = 'none';
         img.style.opacity = '1';
         img.style.transform = 'translateX(0)';
-        img.src = images[currentIndex].src;
-        img.alt = images[currentIndex].alt;
+        img.src = GALLERY_IMAGES[currentIndex].src;
+        img.alt = GALLERY_IMAGES[currentIndex].alt;
         lightbox.classList.add('is-active');
         document.body.classList.add('lightbox-open');
     };
@@ -44,24 +100,22 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const slide = (direction) => {
-        if (isAnimating || images.length <= 1) return;
+        if (isAnimating || GALLERY_IMAGES.length <= 1) return;
         isAnimating = true;
 
-        const nextIndex = (currentIndex + direction + images.length) % images.length;
+        const nextIndex = (currentIndex + direction + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
         const outX = direction > 0 ? '-50px' : '50px';
         const inX  = direction > 0 ? '60px' : '-60px';
 
-        // Slide current image out
         img.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
         img.style.opacity    = '0';
         img.style.transform  = `translateX(${outX})`;
 
         setTimeout(() => {
             currentIndex = nextIndex;
-            img.src = images[currentIndex].src;
-            img.alt = images[currentIndex].alt;
+            img.src = GALLERY_IMAGES[currentIndex].src;
+            img.alt = GALLERY_IMAGES[currentIndex].alt;
 
-            // Reset to entry position without transition, then slide in
             img.style.transition = 'none';
             img.style.transform  = `translateX(${inX})`;
             img.offsetHeight; // force reflow
@@ -74,15 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 260);
     };
 
-    // Open on photo click
+    // Open on photo click — index stored on the element
     document.addEventListener('click', (e) => {
         if (e.target.closest('.lightbox-close, .lightbox-prev, .lightbox-next')) return;
         const item = e.target.closest('.photo-item');
         if (!item) return;
-        const clickedImg = item.querySelector('img');
-        if (!clickedImg) return;
-        const index = images.findIndex(i => i.src === clickedImg.src);
-        open(index >= 0 ? index : 0);
+        const index = parseInt(item.dataset.index, 10);
+        open(isNaN(index) ? 0 : index);
     });
 
     prevBtn.addEventListener('click', (e) => { e.stopPropagation(); slide(-1); });

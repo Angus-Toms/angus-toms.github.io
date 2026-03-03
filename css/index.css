@@ -250,34 +250,60 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     color: var(--text-primary);
 }
 
-.section-image {
+.section-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    border-radius: 12px;
+    overflow: hidden;
     width: 100%;
     aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.04);
+    background: #0d1f2d;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-    position: relative;
-    border-radius: 12px;
 }
 
-.section-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(1, 74, 89, 0.15) 0%, transparent 50%);
-    z-index: 1;
-    pointer-events: none;
+.section-gallery-left {
+    overflow: hidden;
+    min-height: 0;
 }
 
-.section-image img {
+.section-gallery-left img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     filter: contrast(1.05) brightness(0.95);
+}
+
+.section-gallery-right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    height: 100%;
+    min-height: 0;
+}
+
+.section-gallery-right-top,
+.section-gallery-right-bottom {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.section-gallery-right-top img,
+.section-gallery-right-bottom img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(1.05) brightness(0.95);
+}
+
+.section-gallery--reversed .section-gallery-right {
+    order: -1;
+}
+
+.section-gallery--reversed .section-gallery-left {
+    order: 1;
 }
 
 /* ==============================
@@ -302,49 +328,30 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
     align-items: center;
     justify-content: center;
     aspect-ratio: 2 / 1;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    background: #ffffff;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     overflow: hidden;
     position: relative;
 }
 
-.sponsor-logo::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(121, 44, 77, 0.2) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.sponsor-logo--dark {
+    background: #000000;
 }
 
 .sponsor-logo:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(121, 44, 77, 0.4);
     transform: translateY(-4px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-}
-
-.sponsor-logo:hover::before {
-    opacity: 1;
 }
 
 .sponsor-logo img {
     max-width: 85%;
     max-height: 65%;
     object-fit: contain;
-    filter: brightness(0.95) grayscale(0.2);
-    transition: filter 0.3s ease;
     position: relative;
     z-index: 1;
-}
-
-.sponsor-logo:hover img {
-    filter: brightness(1) grayscale(0);
+    transform: scale(1.15);
 }
 
 .sponsor-caption {
@@ -476,7 +483,7 @@ INDEX PAGE STYLES - EDITORIAL MAGAZINE DESIGN
         font-size: 1rem;
     }
 
-    .section-image {
+    .section-gallery {
         aspect-ratio: 4 / 3;
     }
 
