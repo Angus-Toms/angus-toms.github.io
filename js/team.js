@@ -147,6 +147,7 @@ function initializeLightbox() {
         <button class="lightbox-prev" type="button" aria-label="Previous photo">&#8592;</button>
         <figure class="lightbox-content">
             <img class="lightbox-image" alt="">
+            <figcaption class="lightbox-caption"></figcaption>
         </figure>
         <button class="lightbox-next" type="button" aria-label="Next photo">&#8594;</button>
     `;
@@ -155,6 +156,7 @@ function initializeLightbox() {
     lightboxInstance = lightbox;
 
     const lightboxImage   = lightbox.querySelector('.lightbox-image');
+    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
     const closeButton     = lightbox.querySelector('.lightbox-close');
     const prevButton      = lightbox.querySelector('.lightbox-prev');
     const nextButton      = lightbox.querySelector('.lightbox-next');
@@ -171,6 +173,8 @@ function initializeLightbox() {
         lightboxImage.style.transform  = 'translateX(0)';
         lightboxImage.src = currentImages[currentIndex].src;
         lightboxImage.alt = currentImages[currentIndex].alt;
+        lightboxCaption.textContent = currentImages[currentIndex].alt;
+        lightboxCaption.style.display = currentImages[currentIndex].alt ? '' : 'none';
         // Show/hide nav based on whether there are multiple images
         prevButton.style.display = currentImages.length > 1 ? '' : 'none';
         nextButton.style.display = currentImages.length > 1 ? '' : 'none';
@@ -200,6 +204,8 @@ function initializeLightbox() {
             currentIndex = nextIndex;
             lightboxImage.src = currentImages[currentIndex].src;
             lightboxImage.alt = currentImages[currentIndex].alt;
+            lightboxCaption.textContent = currentImages[currentIndex].alt;
+            lightboxCaption.style.display = currentImages[currentIndex].alt ? '' : 'none';
 
             lightboxImage.style.transition = 'none';
             lightboxImage.style.transform  = `translateX(${inX})`;

@@ -8,10 +8,10 @@
 .team-grid {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem 3rem 5rem;
+    padding: 2rem 4rem 5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
 }
 
 .grid-athlete-card {
@@ -396,7 +396,6 @@ body.modal-open {
     position: relative;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid rgba(1, 74, 89, 0.2);
     border-radius: 10px;
 }
 
@@ -612,8 +611,8 @@ body.lightbox-open {
 ============================== */
 @media (max-width: 1024px) {
     .team-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
     }
 
     .modal-athlete-header {
@@ -633,7 +632,7 @@ body.lightbox-open {
 @media (max-width: 768px) {
     .team-grid {
         padding: 2rem 1.5rem 3rem;
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.25rem;
     }
 
