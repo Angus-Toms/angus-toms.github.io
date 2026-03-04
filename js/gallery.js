@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.alt = image.alt;
         img.draggable = false;
         img.loading = 'lazy';
+        img.decoding = 'async';
         item.appendChild(img);
         container.appendChild(item);
     });
